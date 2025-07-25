@@ -1,0 +1,40 @@
+
+% covarianza sirve para saber la correlación positiva/negativa que existe entre los puntos 
+% coeficiente de correlación: p=(cov12)/sqrt(sigma1*sigma2); % una medida de como estan relacionados los datos.
+ MatrizCov=[sigma1^2 cov12; cov21 sigma2^2];
+
+% definir distancia euclídea al cuadrado entre el punto medio y cualquier otro punto
+x1=sym('x1','real');
+x2=sym('x2','real');
+
+Xs= [x1; x2];
+d_2=expand(-(Xs-M)'*(Xs-M));  % devuelve la formula de la distancia euclídea ósea la expresión simbólica son vectores columna.
+x1=3; x2=5; eva(d_2)   % evaluar la expresion (el resultado).
+
+% vpa(Expresion_simbolica,2)  redondear la expresión simbólicas a dos decimales, solo simbólicas para expresar la expresión en un formato mas bien.
+vpa(d_2,2);
+
+
+% definir distancia mahalanobis
+
+% pnv(Mcov)  calcular la matriz inversa.
+
+Mcov=cov(datos);
+x1=sym('x1','real');
+x2=sym('x2','real');
+
+Xs= [x1; x2];
+d_2=expand(-(Xs-M)'*pnv(Mcov)*(Xs-M)); 
+d_21=vpa(d_2);
+ 
+
+
+
+
+
+% que mejor gaussiana/que multivariantes se ajustan mejor a nuestro datos en la función gaussiana vienen dado por el vector U(media) y E(matriz de covarianza), las calcula y evalúa la expresión.
+ 
+
+
+QDA: dk(x)=-0.5*(x-mo_k)^T*Eh^-1(x-mo_h)-1/2log|Eh|+log(pi_k); % ---> | | es det() en matlab
+LDA: dk(x)=-0.5*(x-mo_k)^T*E^-1(x-mo_k)+log(pi_k);

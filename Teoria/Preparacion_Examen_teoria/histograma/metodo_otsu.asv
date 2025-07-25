@@ -1,0 +1,22 @@
+I=imread('P4.jpg');
+
+hist=imhist(I);
+
+k=100;
+m=mean(I(:));
+
+clase1= I<k;
+clase2= I>k;
+
+indices = find(clase1== 1);
+indices2 = find(clase2== 1);
+
+
+n1=sum(clase1(indices));
+n2=sum(clase2(indices2));
+
+p1= n1/ n1+n2;
+p2= n2/ n1+n2;
+ m1=mean(clase1(:))
+ 
+
